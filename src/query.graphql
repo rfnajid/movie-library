@@ -1,0 +1,16 @@
+mutation register {
+  register(input: { email: "test@test.com", password: "password", name: "Jon Doe" }) {
+    id
+    name
+    email
+  }
+}
+
+mutation login {
+  login(input: { email: "test@test.com", password: "password" }) {
+    id
+    name
+    email
+    token
+  }
+}

@@ -1,0 +1,52 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+
+# Build files
+dist/
+build/
+
+# TypeScript
+*.tsbuildinfo
+
+# Cache files
+.rpt2_cache/
+.rts2_cache_cov/
+
+# Test reports
+reports/
+
+# Coverage directories
+coverage/
+
+# Config files
+
+.env
+.env.*
+
+# IDEs and editors
+.idea/
+.vscode/
+
+# IDE - VIM
+*.swp
+*.swo
+
+# Compiled code
+*.js
+*.js.map
+*.d.ts
+
+# NPM packages
+npm-debug.log
+package-lock.json
+yarn.lock
+
+# MacOS files
+.DS_Store
