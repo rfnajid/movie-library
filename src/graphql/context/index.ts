@@ -1,4 +1,3 @@
-import { AuthenticationError } from "apollo-server-express";
 import * as jwt from "jsonwebtoken";
 import User, { UserModel } from "../../models/user";
 require('dotenv').config();

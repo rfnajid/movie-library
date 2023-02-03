@@ -1,7 +1,6 @@
-import { gql } from 'apollo-server-express';
 import userType from './user';
 
-const rootType = gql`
+const rootType = `#graphql
  type Query {
      root: String
  }
