@@ -15,7 +15,6 @@ import express = require('express');
 require('dotenv').config();
 
 const PORT = parseInt(process.env.APP_PORT);
-const GRAPHQL_PATH= process.env.GRAPHQL_PATH!;
 
 async function startServer(){
 
@@ -25,7 +24,7 @@ async function startServer(){
   const apolloServer = new ApolloServer({
     typeDefs,
     resolvers,
-    introspection: false,
+    introspection: true,
     plugins: [
       ApolloServerPluginLandingPageDisabled(),
       ApolloServerPluginDrainHttpServer({ httpServer })

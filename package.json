@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon",
+    "start-dist": "node dist/main.js",
     "test": "jest",
     "clean": "rimraf dist",
     "build": "npm run clean && tsc -p tsconfig.build.json && npm run build-view",
-    "build-view": "npx copyfiles -u 2 src/views/* dist/views",
+    "build-view": "copyfiles -u 2 src/views/* dist/views",
     "migrate": "sequelize-cli db:migrate"
   },
   "repository": {
