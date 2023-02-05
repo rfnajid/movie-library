@@ -10,7 +10,8 @@
     "clean": "rimraf dist",
     "build": "npm run clean && tsc -p tsconfig.build.json && npm run build-view",
     "build-view": "copyfiles -u 2 src/views/* dist/views",
-    "migrate": "sequelize-cli db:migrate"
+    "migrate": "sequelize-cli db:migrate",
+    "migrate-reset": "sequelize-cli db:migrate:undo:all"
   },
   "repository": {
     "type": "git",

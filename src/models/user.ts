@@ -19,7 +19,12 @@ const User = sequelize.define<UserModel>('user',{
     autoIncrement: true,
     primaryKey: true
   },
-  email: STRING,
+  email: {
+    type: STRING,
+    validate: {
+      isEmail: true
+    }
+  },
   password: STRING,
   name: STRING,
   createdAt: DATE,

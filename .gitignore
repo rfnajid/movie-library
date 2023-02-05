@@ -38,11 +38,6 @@ coverage/
 *.swp
 *.swo
 
-# Compiled code
-*.js
-*.js.map
-*.d.ts
-
 # NPM packages
 npm-debug.log
 package-lock.json
@@ -50,3 +45,5 @@ yarn.lock
 
 # MacOS files
 .DS_Store
+
+*.zip
