@@ -1,8 +1,8 @@
 
-import { Crypt } from "../../util/crypt";
 import * as jwt from "jsonwebtoken";
 import InvalidAuthenticationError from "../../error/InvalidAuthenticationError";
 import { User } from "src/models";
+import { Crypt } from "src/utils/crypt";
 require('dotenv').config();
 
 const UserResolver = {
@@ -16,7 +16,6 @@ const UserResolver = {
             const { email, password } = args;
             const user = await User.findOne({ where: { email } });
 
-            console.log('login : '+JSON.stringify(user));
             if (user && Crypt.compare(password, user.password)) {
                 const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!);
                 return { user, token };

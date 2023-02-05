@@ -16,13 +16,13 @@ export const movieSchema = `#graphql
  }
 
  extend type Mutation {
-    createMovie(title: String!, description: String, posterUrl: String): Movie
-    updateMovie(id: Int, title: String, description: String, posterUrl: String): Movie
-    deleteMovie(id: Int!): String
-    addActor(movieId: Int!, actorId: Int!): Movie
-    deleteActor(movieId: Int!, actorId: Int!): Movie
-    addAuthor(movieId: Int!, authorId: Int!): Movie
-    deleteAuthor(movieId: Int!, authorId: Int!): Movie
+    createMovie(title: String!, description: String, posterUrl: String): Movie @isAuthenticated
+    updateMovie(id: Int, title: String, description: String, posterUrl: String): Movie @isAuthenticated
+    deleteMovie(id: Int!): String @isAuthenticated
+    addActor(movieId: Int!, actorId: Int!): Movie @isAuthenticated
+    deleteActor(movieId: Int!, actorId: Int!): Movie @isAuthenticated
+    addAuthor(movieId: Int!, authorId: Int!): Movie @isAuthenticated
+    deleteAuthor(movieId: Int!, authorId: Int!): Movie @isAuthenticated
  }
 
 `;

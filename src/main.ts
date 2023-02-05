@@ -1,4 +1,3 @@
-import typeDefs from './graphql/schemas';
 import resolvers from './graphql/resolvers';
 import context from './graphql/context';
 import router from './route';
@@ -11,6 +10,9 @@ import { ApolloServerPluginLandingPageDisabled } from '@apollo/server/plugin/dis
 import { expressMiddleware } from '@apollo/server/express4';
 import bodyParser = require('body-parser');
 import express = require('express');
+import { protectedSchema, publicSchema, rootSchema } from './graphql/schemas';
+import { makeExecutableSchema } from '@graphql-tools/schema';
+import { authDirective } from './utils/auth-directive';
 
 require('dotenv').config();
 
@@ -21,9 +23,17 @@ async function startServer(){
   const app = express();
   const httpServer = createServer(app);
 
-  const apolloServer = new ApolloServer({
-    typeDefs,
+  const applyAuthSchemaTransform = authDirective();
+
+  let schema = makeExecutableSchema({
     resolvers,
+    typeDefs: [rootSchema, publicSchema, protectedSchema],
+  });
+  schema = applyAuthSchemaTransform(schema);
+  
+
+  const apolloServer = new ApolloServer({
+    schema: schema,
     introspection: true,
     plugins: [
       ApolloServerPluginLandingPageDisabled(),

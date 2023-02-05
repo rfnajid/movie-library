@@ -9,7 +9,6 @@ export const Crypt = {
         return hashedPassword;
     },
     compare: (rawString: string, hashedString: string): boolean => {
-        console.log('crypt.compare : ' + rawString +" vs "+ hashedString);
         const [hashed, salt] = hashedString.split('.');
         return scryptSync(rawString, salt, 64).toString("hex") === hashed;
     }

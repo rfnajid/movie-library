@@ -6,11 +6,10 @@ const verifyToken = async (token) => {
     let user: UserModel = null;
     try{    
         const decoded = await jwt.verify(token, process.env.JWT_SECRET!);
-        const {id} = JSON.parse(decoded.toString());
+        const {id} = decoded as {id};
         user = await User.findByPk(id);
-
     }catch(err){
-        console.log('Unauthorized Access');
+        console.log('Anonymous Access!');
     }
 
     return user;
@@ -19,7 +18,7 @@ const verifyToken = async (token) => {
 
 const context = async ({req, res}) => {
     let token = req.get('Authorization') || '';
-    token.replace('Bearer', '');
+    token = token.replace('Bearer', '').trim();
 
     const user = await verifyToken(token);
 

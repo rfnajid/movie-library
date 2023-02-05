@@ -6,7 +6,6 @@ require('dotenv').config();
 const MovieResolver = {
     Query: {
         async findAllMovie(root, args, context) {
-            console.log(context);
             return Movie.findAll();
         },
         async findOneMovie(root, {id}, context){

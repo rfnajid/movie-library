@@ -12,7 +12,7 @@
     "build-view": "copyfiles -u 2 src/views/* dist/views",
     "migrate": "sequelize-cli db:migrate",
     "migrate-reset": "sequelize-cli db:migrate:undo:all",
-    "migrate-down":"sequelize-cli db:migrate:undo"
+    "migrate-down": "sequelize-cli db:migrate:undo"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
   "homepage": "https://github.com/rfnajid/movie-library#readme",
   "dependencies": {
     "@apollo/server": "^4.3.2",
+    "@graphql-tools/schema": "^9.0.15",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",

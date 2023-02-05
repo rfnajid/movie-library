@@ -6,7 +6,6 @@ require('dotenv').config();
 const PersonResolver = {
     Query: {
         async findAllPerson(root, args, context) {
-            console.log(context);
             return Person.findAll();
         },
         async findOnePerson(root, {id}, context){

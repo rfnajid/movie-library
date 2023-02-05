@@ -2,7 +2,10 @@ import { movieSchema } from "./movie";
 import { personSchema } from "./person";
 import { userSchema } from "./user";
 
-const rootSchema = `#graphql
+export const rootSchema = `#graphql
+
+directive @isAuthenticated on FIELD_DEFINITION
+
  type Query {
      root: String
  }
@@ -12,4 +15,6 @@ const rootSchema = `#graphql
 
 `;
 
-export default [rootSchema, userSchema, personSchema, movieSchema];
+export const protectedSchema = [personSchema, movieSchema];
+
+export const publicSchema = [userSchema];

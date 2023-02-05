@@ -10,15 +10,15 @@ export const personSchema = `#graphql
      authorIn: [Movie]
  }
 
- extend type Query {
+ extend type Query { 
     findAllPerson: [Person]
     findOnePerson(id: Int!): Person
  }
 
  extend type Mutation {
-    createPerson(name: String!, bio: String, photoUrl: String): Person
-    updatePerson(id: Int, name: String, bio: String, photoUrl: String): Person
-    deletePerson(id: Int!): String
+    createPerson(name: String!, bio: String, photoUrl: String): Person @isAuthenticated
+    updatePerson(id: Int, name: String, bio: String, photoUrl: String): Person @isAuthenticated
+    deletePerson(id: Int!): String @isAuthenticated
  }
 
 `;
