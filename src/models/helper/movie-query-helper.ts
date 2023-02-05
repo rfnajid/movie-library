@@ -1,4 +1,4 @@
-import { Movie, Person } from "src/models";
+import { Movie, Person } from "../../models";
 
 const findByPk = (id: number) => {
     return Movie.findByPk(id, {

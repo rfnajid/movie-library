@@ -1,6 +1,6 @@
 import { getDirective, MapperKind, mapSchema } from "@graphql-tools/utils"
 import { defaultFieldResolver, GraphQLSchema } from "graphql"
-import ForbiddenError from "src/error/ForbiddenError";
+import ForbiddenError from "../error/ForbiddenError";
 
 export function authDirective (): (schema: GraphQLSchema) => GraphQLSchema {
     return schema => mapSchema(schema, {

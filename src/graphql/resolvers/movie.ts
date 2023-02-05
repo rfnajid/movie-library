@@ -1,5 +1,5 @@
-import {Movie, MovieActor, MovieAuthor, Person} from "src/models";
-import { movieQueryHelper } from "src/models/helper/movie-query-helper";
+import {Movie, MovieActor, MovieAuthor} from  "../../models";
+import { movieQueryHelper } from "../../models/helper/movie-query-helper";
 
 require('dotenv').config();
 

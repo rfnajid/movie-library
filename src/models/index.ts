@@ -5,7 +5,7 @@ import movie from "./movies";
 import person from "./person";
 import movieActors from "./movieActors";
 import movieAuthor from "./movieAuthor";
-import { Crypt } from "src/utils/crypt";
+import { Crypt } from "../utils/crypt";
 
 export const User = user;
 export const Movie = movie;

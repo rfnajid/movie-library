@@ -1,5 +1,5 @@
-import { Person} from "src/models";
-import { personQueryHelper } from "src/models/helper/person-query-helper";
+import { Person} from "../../models";
+import { personQueryHelper } from "../../models/helper/person-query-helper";
 
 require('dotenv').config();
 
