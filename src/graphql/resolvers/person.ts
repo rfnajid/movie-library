@@ -1,4 +1,4 @@
-import Person from "src/models/person";
+import {Movie, Person} from "src/models";
 
 require('dotenv').config();
 
@@ -9,7 +9,11 @@ const PersonResolver = {
             return Person.findAll();
         },
         async findOnePerson(root, {id}, context){
-            return Person.findByPk(id);
+            return Person.findByPk(id, {
+                include:[{
+                    model: Movie
+                }]
+            });
         }
     },
     Mutation : {
@@ -20,7 +24,6 @@ const PersonResolver = {
         async updatePerson(root, args, context) {
             const id = args.id;
             const person = args;
-            delete person.id;
             await Person.update(person, { 
                 where: { id: id }
             });
@@ -40,6 +43,11 @@ const PersonResolver = {
             }
         }
     },
+    Person : {
+        actorInMovies(person){
+            return person.movies;
+        }
+    }
 }
 
 export default PersonResolver;

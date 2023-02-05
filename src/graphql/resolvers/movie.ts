@@ -1,4 +1,4 @@
-import Movie from "src/models/movies";
+import {Movie, MovieActor, Person} from "src/models";
 
 require('dotenv').config();
 
@@ -9,7 +9,11 @@ const MovieResolver = {
             return Movie.findAll();
         },
         async findOneMovie(root, {id}, context){
-            return Movie.findByPk(id);
+            return Movie.findByPk(id, {
+                include: [{
+                    model: Person
+                }]
+            });
         }
     },
     Mutation : {
@@ -20,7 +24,6 @@ const MovieResolver = {
         async updateMovie(root, args, context) {
             const id = args.id;
             const movie = args;
-            delete movie.id;
             await Movie.update(movie, { 
                 where: { id: id }
             });
@@ -38,8 +41,35 @@ const MovieResolver = {
             }else{
                 return `Can't delete Movie id:${id}`;
             }
+        },
+        async addActor(root, args, context){
+            const {movieId, actorId} = args;
+            await MovieActor.create({movieId, actorId});
+            
+            return Movie.findByPk(movieId, {
+                include: [{
+                    model: Person
+                }]
+            })
+        },
+        async deleteActor(root, args, context){
+            const {movieId, actorId} = args;
+            await MovieActor.destroy({
+                where: {movieId: movieId, actorId: actorId}
+            });
+            
+            return Movie.findByPk(movieId, {
+                include: [{
+                    model: Person
+                }]
+            })
         }
     },
+    Movie: {
+        actors(movie){
+            return movie.persons;
+        }
+    }
 }
 
 export default MovieResolver;

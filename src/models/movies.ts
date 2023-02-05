@@ -1,14 +1,18 @@
-import { BuildOptions, STRING } from "sequelize";
+import { STRING } from "sequelize";
 import { DATE } from "sequelize";
 import { Model, INTEGER } from "sequelize";
 import { sequelize } from "../database";
-import Person from "./person";
 
-type MovieModel = typeof Model
-    & { associate: (models: any) => void }
-    & { new(values?: Record<string, unknown>, options?: BuildOptions) }
+export interface MovieModel extends Model{
+  id: number;
+  title: string;
+  description: string;
+  posterUrl: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
-const Movie = <MovieModel>sequelize.define('movie',{
+export default sequelize.define<MovieModel>('movie',{
   id:{
     type: INTEGER,
     autoIncrement: true,
@@ -21,7 +25,6 @@ const Movie = <MovieModel>sequelize.define('movie',{
   description: STRING,
   posterUrl: STRING,
   createdAt: DATE,
-  updatedAt: DATE
+  updatedAt: DATE,
 }, {});
   
-export default Movie;

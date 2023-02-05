@@ -1,3 +1,4 @@
+
 import { STRING } from "sequelize";
 import { DATE } from "sequelize";
 import { Model, INTEGER } from "sequelize";
@@ -12,7 +13,7 @@ export interface PersonModel extends Model {
   updatedAt: Date
 }
 
-const Person = sequelize.define<PersonModel>('person',{
+export default sequelize.define<PersonModel>('person',{
   id:{
     type: INTEGER,
     autoIncrement: true,
@@ -33,5 +34,3 @@ const Person = sequelize.define<PersonModel>('person',{
       plural: 'persons'
   }
 });
-
-export default Person;

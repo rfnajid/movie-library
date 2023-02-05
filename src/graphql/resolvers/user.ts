@@ -1,7 +1,8 @@
-import User from "../../models/user";
+
 import { Crypt } from "../../util/crypt";
 import * as jwt from "jsonwebtoken";
 import InvalidAuthenticationError from "../../error/InvalidAuthenticationError";
+import { User } from "src/models";
 require('dotenv').config();
 
 const UserResolver = {

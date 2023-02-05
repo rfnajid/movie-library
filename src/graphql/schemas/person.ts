@@ -6,6 +6,7 @@ export const personSchema = `#graphql
      name: String!
      bio: String
      photoUrl: String
+     actorInMovies: [Movie]
  }
 
  extend type Query {

@@ -2,7 +2,6 @@ import { STRING } from "sequelize";
 import { DATE } from "sequelize";
 import { Model, INTEGER } from "sequelize";
 import { sequelize } from "../database";
-import { Crypt } from "../util/crypt";
 
 export interface UserModel extends Model {
   id: number
@@ -13,7 +12,7 @@ export interface UserModel extends Model {
   updatedAt: string
 }
 
-const User = sequelize.define<UserModel>('user',{
+export default sequelize.define<UserModel>('user',{
   id:{
     type: INTEGER,
     autoIncrement: true,
@@ -31,9 +30,3 @@ const User = sequelize.define<UserModel>('user',{
   updatedAt: DATE
 }, {
 });
-
-User.beforeCreate(async (user) => {
-  user.password = Crypt.hash(user.password);
-});
-
-export default User;
