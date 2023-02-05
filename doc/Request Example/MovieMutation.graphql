@@ -1,0 +1,96 @@
+query findAllMovie {
+  findAllMovie {
+    id
+    title
+  }
+}
+
+query findOneMovie {
+  findOneMovie(id: 1) {
+    id
+    title
+    description
+    posterUrl
+    actors {
+      id
+      name
+      bio
+    }
+    authors {
+      id
+      name
+      bio
+    }
+  }
+}
+
+mutation createMovie {
+  createMovie(
+    title: "Titanic"
+    description: "test"
+    posterUrl: "https://upload.wikimedia.org/wikipedia/en/1/18/Titanic_%281997_film%29_poster.png"
+  ) {
+    title
+    description
+    posterUrl
+  }
+}
+
+mutation updateMovie {
+  updateMovie(
+    id: 1
+    title: "Source Code"
+    description: "Army pilot Stevens, recruited for a top-secret operation, finds himself in the body of an unknown man. Soon, he is on a mysterious trail to track down the bomber of the Chicago commuter train."
+  ) {
+    title
+    description
+  }
+}
+
+mutation deleteMovie {
+  deleteMovie(id: 2)
+}
+
+mutation addActor {
+  addActor(movieId: 1, actorId: 4) {
+    title
+    actors {
+      id
+      name
+      bio
+    }
+  }
+}
+
+mutation deleteActor {
+  deleteActor(movieId: 1, actorId: 4) {
+    title
+    actors {
+      id
+      name
+      bio
+    }
+  }
+}
+
+mutation addAuthor {
+  addAuthor(movieId: 1, authorId: 5) {
+    title
+    authors {
+      id
+      name
+      bio
+    }
+  }
+}
+
+mutation deleteAuthor {
+  deleteAuthor(movieId: 1, authorId: 4) {
+    title
+    authors {
+      id
+      name
+      bio
+    }
+  }
+}

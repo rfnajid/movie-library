@@ -1,0 +1,23 @@
+
+query findAllPerson{
+  findAllPerson{
+    id
+    name
+  }
+}
+
+query findOnePerson{
+  findOnePerson(id: 1){
+    id
+    name
+    bio
+    photoUrl
+    actorIn{
+      title
+    }
+    authorIn{
+      title
+    }
+  }
+}
+

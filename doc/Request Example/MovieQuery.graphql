@@ -1,0 +1,25 @@
+query findAllMovie {
+  findAllMovie {
+    id
+    title
+  }
+}
+
+query findOneMovie {
+  findOneMovie(id: 1) {
+    id
+    title
+    description
+    posterUrl
+    actors {
+      id
+      name
+      bio
+    }
+    authors {
+      id
+      name
+      bio
+    }
+  }
+}

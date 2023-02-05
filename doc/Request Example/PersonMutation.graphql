@@ -1,0 +1,24 @@
+
+mutation createPerson{
+  createPerson(
+    name: "Leonardo Di Caprio"
+    bio: "Oscar winning actor"
+    photoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Leonardo_DiCaprio_2014.jpg/220px-Leonardo_DiCaprio_2014.jpg"
+  ){
+    id, name, bio, photoUrl
+  }
+}
+
+mutation updatePerson{
+  updatePerson(
+    id:1 
+    name: "Jake Gylenhaal",
+    bio: "an American actor"
+  ){
+    name, bio
+  }
+}
+
+mutation deletePerson{
+  deletePerson(id: 2)
+}
