@@ -1,4 +1,5 @@
-import {Movie, MovieActor, Person} from "src/models";
+import {Movie, MovieActor, MovieAuthor, Person} from "src/models";
+import { movieQueryHelper } from "src/models/helper/movie-query-helper";
 
 require('dotenv').config();
 
@@ -9,11 +10,7 @@ const MovieResolver = {
             return Movie.findAll();
         },
         async findOneMovie(root, {id}, context){
-            return Movie.findByPk(id, {
-                include: [{
-                    model: Person
-                }]
-            });
+           return movieQueryHelper.findByPk(id);
         }
     },
     Mutation : {
@@ -46,11 +43,7 @@ const MovieResolver = {
             const {movieId, actorId} = args;
             await MovieActor.create({movieId, actorId});
             
-            return Movie.findByPk(movieId, {
-                include: [{
-                    model: Person
-                }]
-            })
+            return movieQueryHelper.findByPk(movieId);
         },
         async deleteActor(root, args, context){
             const {movieId, actorId} = args;
@@ -58,16 +51,29 @@ const MovieResolver = {
                 where: {movieId: movieId, actorId: actorId}
             });
             
-            return Movie.findByPk(movieId, {
-                include: [{
-                    model: Person
-                }]
-            })
+            return movieQueryHelper.findByPk(movieId);
+        },
+        async addAuthor(root, args, context){
+            const {movieId, authorId} = args;
+            await MovieAuthor.create({movieId, authorId});
+            
+            return movieQueryHelper.findByPk(movieId);
+        },
+        async deleteAuthor(root, args, context){
+            const {movieId, authorId} = args;
+            await MovieAuthor.destroy({
+                where: {movieId: movieId, authorId: authorId}
+            });
+            
+            return movieQueryHelper.findByPk(movieId);
         }
     },
     Movie: {
         actors(movie){
-            return movie.persons;
+            return movie.actors;
+        },
+        authors(movie){
+            return movie.authors;
         }
     }
 }

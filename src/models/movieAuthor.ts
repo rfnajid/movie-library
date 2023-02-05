@@ -1,25 +1,26 @@
+
 import { Model, INTEGER } from "sequelize";
 import { sequelize } from "../database";
 
-export interface MovieActorModel extends Model {
+export interface MovieAuthorModel extends Model {
   movieId: number;
-  actorId: number;
+  authorId: number;
 }
 
-export default sequelize.define<MovieActorModel>('movieActor',{
+export default sequelize.define<MovieAuthorModel>('movieAuthors',{
   movieId:{
     type: INTEGER,
     primaryKey: true
   },
-  actorId:{
+  authorId:{
     type: INTEGER,
     primaryKey: true
   }
 }, {
-  tableName: 'movieActors',
+  tableName: 'movieAuthors',
   name: {
-      singular: 'movieActor',
-      plural: 'movieActors'
+      singular: 'movieAuthor',
+      plural: 'movieAuthors'
   },
   timestamps: false
 });

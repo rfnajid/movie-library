@@ -7,6 +7,7 @@ export const movieSchema = `#graphql
      description: String
      posterUrl: String
      actors: [Person]
+     authors: [Person]
  }
 
  extend type Query {
@@ -20,6 +21,8 @@ export const movieSchema = `#graphql
     deleteMovie(id: Int!): String
     addActor(movieId: Int!, actorId: Int!): Movie
     deleteActor(movieId: Int!, actorId: Int!): Movie
+    addAuthor(movieId: Int!, authorId: Int!): Movie
+    deleteAuthor(movieId: Int!, authorId: Int!): Movie
  }
 
 `;
