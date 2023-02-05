@@ -1,6 +1,7 @@
-import userType from './user';
+import { personSchema } from "./person";
+import { userSchema } from "./user";
 
-const rootType = `#graphql
+const rootSchema = `#graphql
  type Query {
      root: String
  }
@@ -10,4 +11,4 @@ const rootType = `#graphql
 
 `;
 
-export default [rootType, userType];
+export default [rootSchema, userSchema, personSchema];
